@@ -22,16 +22,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startTestButton.addEventListener("click", function () {
         // Specify the URL of the first question page
-        const question1Url = "Q1.html";
+        const question1Url = "Questions/Q1.html";
 
         // Open the question page in a new window or tab
         window.open(question1Url, "_blank");
     });
 });
 
+window.open("page2.html")
 
+window.close("index.html")
 
 function nextQuestion(nextPage) {
     window.location.href = nextPage;
     return false; // Prevent the form from submitting (to avoid page reload)
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const startTestButton = document.getElementById("submitBtn");
+
+    startTestButton.addEventListener("click", function () {
+        // Specify the URL of the first question page
+        const questionUrl = "Questions/Q2.html";
+
+        // Open the question page in a new window or tab
+        window.open(questionUrl, "_blank");
+    });
+});
