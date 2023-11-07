@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 1</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="myScript.js"></script>
 </head>
 <body>
     <h1>Use the sentences below to describe your personality</h1>
     <h1>When I make decisions:</h1>
-        <form id="question1Form">
+        <form id="question1Form" onsubmit="nextQuestion('Q2.html');">
             <label for="question1">When I make decisions:</label>
             <ul>
                 <li><input type="radio" id="optionA" name="decision" value="A"> <label for="optionA">I do it quickly and go with the first impressions.</label></li>
@@ -20,7 +21,5 @@
             <button type="button" id="submitBtn">Submit</button>
             <div id="error-message" style="color: red;"></div>
         </form>
-
-    <script src="script.js"></script>
 </body>
 </html>

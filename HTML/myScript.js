@@ -29,3 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+
+function nextQuestion(nextPage) {
+    window.location.href = nextPage;
+    return false; // Prevent the form from submitting (to avoid page reload)
+}
