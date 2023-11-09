@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 8 - The True Colors Personality Test</title>
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
-    <script src="myScript.js"></script>
+    <script src="/JS/myScript.js"></script>
     <style>
         body {
             background-image: url('../Images/7.png');
@@ -15,16 +15,16 @@
 </head>
 <body>
     <h1>Question 8</h1>
-    <form id="question8Form">
-        <label for="question8">When I am feeling discouraged or “down in the dumps”:</label>
-        <ul>
-            <li><input type="radio" id="optionA" name="feeling" value="A"> <label for="optionA">I often become rude, mad, or sometimes even mean.</label></li>
-            <li><input type="radio" id="optionB" name="feeling" value="B"> <label for="optionB">I withdraw, don’t talk very much, and try to think my way out of the problem.</label></li>
-            <li><input type="radio" id="optionC" name="feeling" value="C"> <label for="optionC">I feel emotional, am sad, and usually like to talk it over with someone close to me.</label></li>
-            <li><input type="radio" id="optionD" name="feeling" value="D"> <label for="optionD">I try to figure out what’s causing the problem and fix it.</label></li>
-        </ul>
-        <button type="button" id "submitBtn">Submit</button>
-        <div id="error-message" style="color: red;"></div>
-    </form>
+    <div class="question-container">    
+        <div class="question">
+            <p>When I am feeling discouraged or “down in the dumps”:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q9.html', 'Option 1')">I often become rude, mad, or sometimes even mean.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q9.html', 'Option 2')">I withdraw, don’t talk very much, and try to think my way out of the problem.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q9.html', 'Option 3')">I feel emotional, am sad, and usually like to talk it over with someone close to me.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q9.html', 'Option 4')">I try to figure out what’s causing the problem and fix it.</button>
+        </div>
+    </div>
 </body>
 </html>

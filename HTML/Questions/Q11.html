@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 11 - The True Colors Personality Test</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
-    <script src="myScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <script src="/JS/myScript.js"></script>
+    <style>
+        body {
+            background-image: url('../Images/18.png');
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <h1>Question 11</h1>
-    <form id="question11Form">
-        <label for="question11">Teachers at school (who like me and in whose class I do pretty well) would probably describe me as:</label>
-        <ul>
-            <li><input type="radio" id="optionA" name="teacherDesc" value="A"> <label for="optionA">Charming, a natural leader, clever, someone who is fun to have around.</label></li>
-            <li><input type="radio" id="optionB" name="teacherDesc" value="B"> <label for="optionB">Thoughtful, someone who has good answers, someone who likes to figure out problems.</label></li>
-            <li><input type="radio" id="optionC" name="teacherDesc" value="C"> <label for="optionC">Nice, friendly, someone who gets along with other students and is helpful to the teacher and others.</label></li>
-            <li><input type="radio" id="optionD" name="teacherDesc" value="D"> <label for="optionD">Neat, organized, prepared, someone who does assignments and is a good student.</label></li>
-        </ul>
-        <button type="button" id="submitBtn">Submit</button>
-        <div id="error-message" style="color: red;"></div>
-    </form>
+    <div class="question-container">    
+        <div class="question">
+            <p>Teachers at school (who like me and in whose class I do pretty well) would probably describe me as:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q11.html', 'Option 1')">Charming, a natural leader, clever, someone who is fun to have around.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q11.html', 'Option 2')">Thoughtful, someone who has good answers, someone who likes to figure out problems.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q11.html', 'Option 3')">Nice, friendly, someone who gets along with other students and is helpful to the teacher and others.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q11.html', 'Option 4')">Neat, organized, prepared, someone who does assignments and is a good student.</button>
+        </div>
+    </div>
 </body>
 </html>

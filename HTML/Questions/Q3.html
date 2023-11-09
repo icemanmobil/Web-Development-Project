@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 3 - The True Colors Personality Test</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
-    <script src="myScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <script src="/JS/myScript.js"></script>
+    <style>
+        body {
+            background-image: url('../Images/10.png');
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <h1>Question 3</h1>
-    <form id="question3Form">
-        <label for="question3">When I’m with my friends, I like to provide:</label>
-        <ul>
-            <li><input type="radio" id="optionA" name="provide" value="A"> <label for="optionA">The excitement; the fun; the jokes.</label></li>
-            <li><input type="radio" id="optionB" name="provide" value="B"> <label for="optionB">Questions; answers; a logical way of looking at things.</label></li>
-            <li><input type="radio" id="optionC" name="provide" value="C"> <label for="optionC">Concern for others; a lot of caring.</label></li>
-            <li><input type="radio" id="optionD" name="provide" value="D"> <label for="optionD">The planning; a sense of security; a good standard.</label></li>
-        </ul>
-        <button type="button" id="submitBtn">Submit</button>
-        <div id="error-message" style="color: red;"></div>
-    </form>
+    <div class="question-container">    
+        <div class="question">
+            <p>When I’m with my friends, I like to provide:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q4.html', 'Option 1')">The excitement; the fun; the jokes.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q4.html', 'Option 2')">Questions; answers; a logical way of looking at things.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q4.html', 'Option 3')">Concern for others; a lot of caring.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q4.html', 'Option 4')">The planning; a sense of security; a good standard.</button>
+        </div>
+    </div>
 </body>
 </html>

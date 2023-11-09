@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 1</title>
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
-    <script src="myScript.js"></script>
+    <script src="/JS/myScript.js"></script>
     <style>
         body {
             background-image: url('../Images/2.png');
@@ -14,18 +14,17 @@
     </style>
 </head>
 <body>
-    <h1>Use the sentences below to describe your personality</h1>
-    <h1>When I make decisions:</h1>
-        <form id="question1Form" onsubmit="nextQuestion('Q2.html');">
-            <label for="question1">When I make decisions:</label>
-            <ul>
-                <li><input type="radio" id="optionA" name="decision" value="A"> <label for="optionA">I do it quickly and go with the first impressions.</label></li>
-                <li><input type="radio" id="optionB" name="decision" value="B"> <label for="optionB">I think about it, consider the options and then decide.</label></li>
-                <li><input type="radio" id="optionC" name="decision" value="C"> <label for="optionC">I listen to my feelings and consider how my decisions will affect others.</label></li>
-                <li><input type="radio" id="optionD" name="decision" value="D"> <label for="optionD">I take it seriously and always try to make the right decision.</label></li>
-            </ul>
-            <button type="button" id="submitBtn">Submit</button>
-            <div id="error-message" style="color: red;"></div>
-        </form>
+    <h1>Question 1</h1>
+    <div class="question-container">    
+        <div class="question">
+            <p>When I make decisions:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q2.html', 'Option 1')">I do it quickly and go with the first impressions.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q2.html', 'Option 2')">I think about it, consider the options and then decide.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q2.html', 'Option 3')">I listen to my feelings and consider how my decisions will affect others.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q2.html', 'Option 4')">I take it seriously and always try to make the right decision.</button>
+        </div>
+    </div>
 </body>
 </html>

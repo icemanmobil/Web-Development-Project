@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 2 - The True Colors Personality Test</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
-    <script src="myScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <script src="/JS/myScript.js"></script>
+    <style>
+        body {
+            background-image: url('../Images/4.png');
+            background-size: cover;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Question 2</h1>
-    <form id="question2Form">
-        <label for="question2">The best way for others to show me they care about me is to:</label>
-        <ul>
-            <li><input type="radio" id="optionA" name="care" value="A"> <label for="optionA">Do fun things with me.</label></li>
-            <li><input type="radio" id="optionB" name="care" value="B"> <label for="optionB">Give me space to be myself.</label></li>
-            <li><input type="radio" id="optionC" name="care" value="C"> <label for="optionC">Spend time with me doing whatever.</label></li>
-            <li><input type="radio" id="optionD" name="care" value="D"> <label for="optionD">Do what I want to do; not let me down or go back on their word.</label></li>
-        </ul>
-        <button type="button" id="submitBtn">Submit</button>
-        <div id="error-message" style="color: red;"></div>
-    </form>
+    <div class="question-container">    
+        <div class="question">
+            <p>The best way for others to show me they care about me is to:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q3.html', 'Option 1')">Do fun things with me.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q3.html', 'Option 2')">Give me space to be myself.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q3.html', 'Option 3')">Spend time with me doing whatever.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q3.html', 'Option 4')">Do what I want to do; not let me down or go back on their word.</button>
+        </div>
+    </div>
 </body>
 </html>

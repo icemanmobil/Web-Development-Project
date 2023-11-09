@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 7 - The True Colors Personality Test</title>
     <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
-    <script src="myScript.js"></script>
+    <script src="/JS/myScript.js"></script>
     <style>
         body {
             background-image: url('../Images/6.png');
@@ -15,16 +15,16 @@
 </head>
 <body>
     <h1>Question 7</h1>
-    <form id="question7Form">
-        <label for="question7">My basic approach to life is:</label>
-        <ul>
-            <li><input type="radio" id="optionA" name="approach" value="A"> <label for="optionA">To take one day at a time and have fun.</label></li>
-            <li><input type="radio" id="optionB" name="approach" value="B"> <label for="optionB">To figure out what life is all about.</label></li>
-            <li><input type="radio" id="optionC" name="approach" value="C"> <label for="optionC">To help others and be happy and succeed.</label></li>
-            <li><input type="radio" id="optionD" name="approach" value="D"> <label for="optionD">To plan for the future and make it as good as possible.</label></li>
-        </ul>
-        <button type="button" id="submitBtn">Submit</button>
-        <div id="error-message" style="color: red;"></div>
-    </form>
+    <div class="question-container">    
+        <div class="question">
+            <p>Friends who know me best would say that I am:</p>
+        </div>
+        <div class="answer-options">
+            <button class="option" onclick="saveResponseAndRedirect('Q8.html', 'Option 1')">To take one day at a time and have fun.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q8.html', 'Option 2')">To figure out what life is all about.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q8.html', 'Option 3')">To help others and be happy and succeed.</button>
+            <button class="option" onclick="saveResponseAndRedirect('Q8.html', 'Option 4')">To plan for the future and make it as good as possible.</button>
+        </div>
+    </div>
 </body>
 </html>
