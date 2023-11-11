@@ -1,146 +1,102 @@
-
-
 h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-/* Style the form and its elements */
-form {
-    margin: auto;
-}
+/*.question-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f0f0;
+  height: 100vh;
+  margin: 10px;}*/
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-/* Style the submit button */
-#submitBtn {
-    background-color: #007bff; /* Bright blue */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#submitBtn:hover {
-    background-color: #0056b3; /* Slightly darker blue on hover */
-}
-
-/* Style error message */
-#error-message {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* Add more custom styles as needed */
-
-.question-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f0f0f0;
-    height: 100vh;
-    margin: 10px; /* Add margin to separate each question */
+.question {
+  width: 45%;
 }
 
 .question {
-    width: 45%;
-}
-
-.question {
-    font-size: 1.5rem;
-    font-family: 'HK Grotesk', sans-serif; /* Apply your chosen font family */
+  font-size: 1.5rem;
+  font-family: "HK Grotesk", sans-serif; /* Apply your chosen font family */
 }
 
 .question p {
-    font-size: 1rem;
-    font-family: 'HK Grotesk', sans-serif;
+  font-size: 1rem;
+  font-family: "HK Grotesk", sans-serif;
 }
 
 .answer-options {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center items vertically */
-    height: 100%
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center items vertically */
+  height: 100%;
 }
 
 .option {
-    display: block;
-    width: auto;
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: left;
-    font-family: 'HK Grotesk', sans-serif; /* Apply your chosen font family */
+  display: block;
+  width: auto;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  font-family: "HK Grotesk", sans-serif; /* Apply your chosen font family */
 }
 
 /* other changes */
 
 .question-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-    background-color: #a09b9b;
-    height: 80vh;
-    width: 80%;
-    margin: auto; /* Add margin to separate each question */
-    transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #a09b9b;
+  height: 80vh;
+  width: 80%;
+  margin: auto; /* Add margin to separate each question */
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .question {
-    width: 40%;
+  width: 40%;
 }
 
 .answer-options {
-    width: 60%;
+  width: 60%;
 }
 
 /* Make the <p> element bigger */
 .question p {
-    font-size: 3rem;
-    text-align: center; /* Adjust the font size as needed */
+  font-size: 3rem;
+  text-align: center; /* Adjust the font size as needed */
 }
 .question-container:hover {
-    background-color: #f5f5f5; /* Light gray background on hover */
-    transition: background-color 0.3s, transform 0.3s;
-    transform: scale(1.02); /* Slight scale-up effect on hover */
+  background-color: #f5f5f5; /* Light gray background on hover */
+  transition: background-color 0.3s, transform 0.3s;
+  transform: scale(1.02); /* Slight scale-up effect on hover */
 }
 /* Rest of your CSS styles */
 
 /* Apply hover effect to the question container */
 .option:hover {
-    background-color: #183091; /* Light gray background on hover */
-    transition: background-color 0.3s, transform 0.3s;
-    transform: scale(1.02); /* Slight scale-up effect on hover */
+  background-color: #183091; /* Light gray background on hover */
+  transition: background-color 0.3s, transform 0.3s;
+  transform: scale(1.02); /* Slight scale-up effect on hover */
 }
 
 /* Rest of your CSS styles */
 
-
 @media (max-width: 768px) {
-    .question-container {
-        width: 95%; /* Adjust width for smaller screens */
-        height: auto; /* Allow height to adapt to content */
-    }
+  .question-container {
+    width: 95%; /* Adjust width for smaller screens */
+    height: auto; /* Allow height to adapt to content */
+  }
 }
