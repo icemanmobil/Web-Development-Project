@@ -1,18 +1,18 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     const submitBtn = document.getElementById("submitBtn");
-//     const errorDiv = document.getElementById("error-message");
+// JavaScript code for typing effect
+const textToType = "The True Colors Personality Test!!!";
+let index = 0;
+const typingElement = document.getElementById("typing-text");
 
-//     submitBtn.addEventListener("click", function () {
-//         const question1Value = document.getElementById("question1").value;
+function typeText() {
+  if (index < textToType.length) {
+    typingElement.innerHTML += textToType.charAt(index);
+    index++;
+    setTimeout(typeText, 100); // Adjust the typing speed by changing the timeout value
+  }
+}
 
-//         if (question1Value.trim() === "") {
-//             errorDiv.innerHTML = "Please answer the question before submitting.";
-//         } else {
-//             // Process the answer here if needed
-//             // Redirect to the next question or submit the entire questionnaire
-//         }
-//     });
-// });
+// Trigger the typing effect when the page loads
+window.onload = typeText;
 
 document.addEventListener("DOMContentLoaded", function () {
   const startTestButton = document.getElementById("startTestButton");
@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.open(question1Url, "_blank");
   });
 });
-
-window.close("index.html");
 
 function nextQuestion(nextPage) {
   window.location.href = nextPage;
