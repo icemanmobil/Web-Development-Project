@@ -1,30 +1,20 @@
-// JavaScript code for typing effect
-const textToType = "The True Colors Personality Test!!!";
-let index = 0;
-const typingElement = document.getElementById("typing-text");
-
-function typeText() {
-  if (index < textToType.length) {
-    typingElement.innerHTML += textToType.charAt(index);
-    index++;
-    setTimeout(typeText, 100); // Adjust the typing speed by changing the timeout value
-  }
-}
-
-// Trigger the typing effect when the page loads
-window.onload = typeText;
+console.log("Script loaded!");
 
 document.addEventListener("DOMContentLoaded", function () {
-  const startTestButton = document.getElementById("startTestButton");
-  debugger;
+  const textToType = "The True Colors Personality Test!!!";
+  let index = 0;
+  const typingElement = document.getElementById("typing-text");
 
-  startTestButton.addEventListener("click", function () {
-    // Specify the URL of the first question page
-    const question1Url = "Questions/Q1.html";
+  function typeText() {
+    if (index < textToType.length) {
+      typingElement.innerHTML += textToType.charAt(index);
+      index++;
+      setTimeout(typeText, 100); // Adjust the typing speed by changing the timeout value
+    }
+  }
 
-    // Open the question page in a new window or tab
-    window.open(question1Url, "_blank");
-  });
+  // Trigger the typing effect when the page loads
+  typeText();
 });
 
 function nextQuestion(nextPage) {

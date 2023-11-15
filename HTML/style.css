@@ -11,6 +11,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -18,10 +19,12 @@ body {
 main {
   flex: 1;
   margin-bottom: 20px; /* Add spacing at the bottom of the main content */
+  align-items: center;
+  justify-content: center;
 }
 
 nav {
-  min-height: 85vh;
+  min-height: 25vh;
 }
 
 nav ul {
@@ -55,4 +58,19 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #fbf9f9;
+  font-family: "HK Grotesk", sans-serif;
+  margin-bottom: 20px;
+}
+
+.content {
+  min-height: 35vh;
+  max-width: 52%; /* Set a maximum width for better readability */
+  margin-left: 20px; /* Adjust the left margin */
 }
