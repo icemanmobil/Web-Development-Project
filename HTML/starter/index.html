@@ -6,21 +6,18 @@
     <title>Login-Page</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-      src="https://kit.fontawesome.com/af562a2a63.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <script src="/JS/myScript.js"></script>
   </head>
   <body>
     <section class="forms">
       <div class="container">
         <div class="logo">
-          <a class="brand-logo" href="../Home.html"
-            >4 color personality test
+          <a class="brand-logo" href="../Home.html">
+            4 color personality test
           </a>
         </div>
 
@@ -31,18 +28,23 @@
             <strong>Welcome!</strong>
             <span>Sign in to your account</span>
 
-            <form action="#" method="post" class="login-form">
+            <form
+              action="#"
+              method="post"
+              class="login-form"
+              onsubmit="return validateForm()"
+            >
               <fieldset>
                 <div class="form">
                   <div class="form-row">
                     <span class="fas fa-user"></span>
                     <label class="form-label" for="input">Name</label>
-                    <input type="text" class="form-text" />
+                    <input type="text" class="form-text" id="username" />
                   </div>
                   <div class="form-row">
                     <span class="fas fa-eye"></span>
                     <label class="form-label" for="input">Password</label>
-                    <input type="password" class="form-text" />
+                    <input type="password" class="form-text" id="password" />
                   </div>
                   <div class="form-row bottom">
                     <div class="form-check">
@@ -65,11 +67,10 @@
               </fieldset>
             </form>
           </div>
-          <!-- //login -->
         </div>
 
         <div class="copy-right">
-          <p>&copy; 2023 4 Personalities Test | Designed by Team 4</p>
+          <p>&copy; 2023 4 Colors Personalities Test</p>
         </div>
       </div>
     </section>
