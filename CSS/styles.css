@@ -81,4 +81,6 @@ h1 {
   }
 }
 
-/* testing the checkmark
+.option.selected {
+  background-color: #435291;
+}
