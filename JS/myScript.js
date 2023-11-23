@@ -78,20 +78,62 @@ let data = {
     c: undefined,
     d: undefined,
   },
+  q6: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
+  q7: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
+  q8: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
+  q9: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
+  q10: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
+  q11: {
+    pointCount: 0,
+    a: undefined,
+    b: undefined,
+    c: undefined,
+    d: undefined,
+  },
 };
 
-function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
+/*function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
   // Retrieve existing responses from localStorage or initialize an empty array
   var responses = JSON.parse(localStorage.getItem("responses")) || data;
+
+  if (responses[questionId] && responses[questionId][selectedOption]) {
+    alert("This option has already been selected. Please choose a different option.");
+    return;
+  }
 
   // Determine the points based on the order of the option clicked
   const pointCount = responses[questionId].pointCount;
   // Check if all four options are selected
-  if (pointCount === 4) {
-    // Redirect to the next page
-    window.location.href = nextPage;
-    return;
-  }
 
   const points = pointCount + 1;
 
@@ -105,4 +147,50 @@ function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
   // Change the color of the clicked option
   var clickedOption = document.activeElement;
   clickedOption.classList.add("selected");
+
+  if (responses[questionId].pointCount === 4) {
+    // Redirect to the next page
+    window.location.href = nextPage;
+  }
+}*/
+
+function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
+  // Retrieve existing responses from localStorage or initialize an empty object
+  var responses = JSON.parse(localStorage.getItem("responses")) || {};
+
+  // Check if the option has already been selected
+  if (responses[questionId] && responses[questionId][selectedOption]) {
+    alert(
+      "This option has already been selected. Please choose a different option."
+    );
+    return;
+  }
+
+  // Determine the points based on the order of the option clicked
+  const pointCount = responses[questionId]
+    ? responses[questionId].pointCount || 0
+    : 0;
+
+  const points = pointCount + 1;
+
+  // Initialize the question in responses if it doesn't exist
+  if (!responses[questionId]) {
+    responses[questionId] = { pointCount: 0 };
+  }
+
+  // Add the current response to the object
+  responses[questionId][selectedOption] = points;
+  responses[questionId].pointCount++;
+
+  // Save the updated responses back to localStorage
+  localStorage.setItem("responses", JSON.stringify(responses));
+
+  // Change the color of the clicked option
+  var clickedOption = document.activeElement;
+  clickedOption.classList.add("selected");
+
+  if (responses[questionId].pointCount === 4) {
+    // Redirect to the next page
+    window.location.href = nextPage;
+  }
 }
