@@ -10,10 +10,6 @@ h1 {
   font-family: "HK Grotesk", sans-serif; /* Apply your chosen font family */
 }
 
-.question p {
-  font-size: 1rem;
-}
-
 .answer-options {
   display: flex;
   flex-direction: column;
@@ -83,4 +79,42 @@ h1 {
 
 .option.selected {
   background-color: #435291;
+}
+
+/*Testing*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#additionalInfo {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#additionalInfo h1 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#additionalInfo p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 8px;
 }

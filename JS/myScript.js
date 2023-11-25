@@ -1,9 +1,8 @@
-function saveResponseAndRedirect(nextQuestionURL, selectedOption) {
-  // Save the selected option to sessionStorage
-  sessionStorage.setItem("selectedOption", selectedOption);
-
-  window.location.href = nextQuestionURL;
-}
+document.addEventListener("DOMContentLoaded", function () {
+  // Your existing script logic here
+  calculateOptionSums();
+  updateResults();
+});
 
 var validCredentials = [
   { username: "Ariam", password: "pass1" },
@@ -122,38 +121,6 @@ let data = {
   },
 };
 
-/*function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
-  // Retrieve existing responses from localStorage or initialize an empty array
-  var responses = JSON.parse(localStorage.getItem("responses")) || data;
-
-  if (responses[questionId] && responses[questionId][selectedOption]) {
-    alert("This option has already been selected. Please choose a different option.");
-    return;
-  }
-
-  // Determine the points based on the order of the option clicked
-  const pointCount = responses[questionId].pointCount;
-  // Check if all four options are selected
-
-  const points = pointCount + 1;
-
-  // Add the current response to the array
-  responses[questionId][selectedOption] = points;
-  responses[questionId].pointCount++;
-
-  // Save the updated responses back to localStorage
-  localStorage.setItem("responses", JSON.stringify(responses));
-
-  // Change the color of the clicked option
-  var clickedOption = document.activeElement;
-  clickedOption.classList.add("selected");
-
-  if (responses[questionId].pointCount === 4) {
-    // Redirect to the next page
-    window.location.href = nextPage;
-  }
-}*/
-
 function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
   // Retrieve existing responses from localStorage or initialize an empty object
   var responses = JSON.parse(localStorage.getItem("responses")) || {};
@@ -193,4 +160,80 @@ function saveResponseAndRedirect(nextPage, questionId, selectedOption) {
     // Redirect to the next page
     window.location.href = nextPage;
   }
+}
+
+function calculateOptionSums() {
+  var responses = JSON.parse(localStorage.getItem("responses")) || {};
+
+  // Initialize option sums
+  var optionSums = { a: 0, b: 0, c: 0, d: 0 };
+
+  // Iterate through questions
+  for (var questionId in responses) {
+    var question = responses[questionId];
+
+    // Iterate through options in the question
+    for (var option in question) {
+      // Check if it's an option (not pointCount)
+      if (option !== "pointCount") {
+        // Add the points to the corresponding option sum
+        optionSums[option] += question[option];
+      }
+    }
+  }
+
+  // Print or use the option sums as needed
+  console.log("Option Sums:", optionSums);
+
+  localStorage.setItem("optionSums", JSON.stringify(optionSums));
+}
+
+// Call this function when you want to calculate the sums
+calculateOptionSums();
+
+function updateResults() {
+  var optionSums = JSON.parse(localStorage.getItem("optionSums")) || {};
+
+  // Iterate through the option sums and update the corresponding table cells
+  for (var option in optionSums) {
+    var optionSumElement = document.getElementById(
+      "option" + option.toUpperCase() + "Sum"
+    );
+    if (optionSumElement) {
+      optionSumElement.textContent = optionSums[option];
+    }
+  }
+
+  // Determine the option with the maximum sum
+  var maxOption = Object.keys(optionSums).reduce(function (a, b) {
+    return optionSums[a] > optionSums[b] ? a : b;
+  });
+
+  // Set background color based on the color with the most points
+  document.body.style.backgroundColor = getColorForOption(maxOption);
+
+  updateAdditionalInfo(maxOption);
+}
+
+// Helper function to map option letters to corresponding colors
+function getColorForOption(option) {
+  var colorMap = { a: "Orange", b: "Green", c: "Blue", d: "Gold" };
+  return colorMap[option];
+}
+
+function updateAdditionalInfo(color) {
+  var additionalInfoElement = document.getElementById("additionalInfo");
+  var infoContent = "";
+
+  // Add information based on the color
+  switch (color) {
+    case "a":
+      infoContent =
+        "<h1>Are you…Orange?</h1><br><h3>Witty…Charming…Spontaneous?<br>Impulsive…Generous…Impactful?<br>Optimistic…Eager…Bold?<br>Physical…Immediate…Courageous?</h3><br>At school…<br>I learn by doing and experiencing, rather than by listening and reading.<br>I like being physically involved in the learning process and am motivated by my own natural competitive self and sense of fun.<br>I am a natural performer.<br>I like doing tasks that allow me to be independent and free.";
+      break;
+    // Repeat similar cases for other colors
+  }
+
+  // Update the content
+  additionalInfoElement.innerHTML = infoContent;
 }
