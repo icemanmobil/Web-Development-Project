@@ -13,10 +13,10 @@ CSS Version: X.X.X
 JavaScript Version: X.X.X
 
 Contributors:
-Meet Hemantbhai Patel
-Rutvik Hiteshkumar Thaker
-Hunter Joseph
-Mohammad Yazdkhasti
+Meet Hemantbhai Patel,
+Rutvik Hiteshkumar Thaker,
+Hunter Joseph,
+Mohammad Yazdkhasti,
 Ariam ruiz Lopez
 
 
