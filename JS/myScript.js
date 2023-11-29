@@ -1,9 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Your existing script logic here
-  calculateOptionSums();
-  updateResults();
-});
-
 var validCredentials = [
   { username: "Ariam", password: "pass1" },
   { username: "Meet", password: "pass2" },
@@ -69,7 +63,8 @@ function validateForm() {
     ) {
       alert("Login successful!");
 
-      window.location.href = "/HTML/Questions/Q1.html";
+      // Redirect to Home.html
+      window.location.href = "HTML/Home.html";
 
       return true; // Proceed with form submission
     }
@@ -77,8 +72,11 @@ function validateForm() {
 
   // If no match is found, show an alert and prevent form submission
   alert("Invalid username or password. Please try again.");
-  usernameInput.value = ""; // Clear the username field
-  passwordInput.value = ""; // Clear the password field
+
+  // Clear the username and password fields
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+
   return false;
 }
 
@@ -229,106 +227,78 @@ function calculateOptionSums() {
   localStorage.setItem("optionSums", JSON.stringify(optionSums));
 }
 
-// Call this function when you want to calculate the sums
-calculateOptionSums();
+function updateResults() {
+  var optionSums = JSON.parse(localStorage.getItem("optionSums")) || {};
 
-// function updateResults() {
-//   var optionSums = JSON.parse(localStorage.getItem("optionSums")) || {};
+  // Iterate through the option sums and update the corresponding table cells
+  for (var option in optionSums) {
+    var optionSumElement = document.getElementById(
+      "option" + option.toUpperCase() + "Sum"
+    );
+    if (optionSumElement) {
+      optionSumElement.textContent = optionSums[option];
+    }
+  }
 
-//   // Iterate through the option sums and update the corresponding table cells
-//   for (var option in optionSums) {
-//     var optionSumElement = document.getElementById(
-//       "option" + option.toUpperCase() + "Sum"
-//     );
-//     if (optionSumElement) {
-//       optionSumElement.textContent = optionSums[option];
-//     }
-//   }
+  // Determine the option with the maximum sum
+  var maxOption = Object.keys(optionSums).reduce(function (a, b) {
+    return optionSums[a] > optionSums[b] ? a : b;
+  });
+  var sameSumColors = Object.keys(optionSums).filter(function (color) {
+    return optionSums[color] === optionSums[maxOption] && color !== maxOption;
+  });
 
-//   // Determine the option with the maximum sum
-//   var maxOption = Object.keys(optionSums).reduce(function (a, b) {
-//     return optionSums[a] > optionSums[b] ? a : b;
-//   });
-
-//   // Set background color based on the color with the most points
-//   document.body.style.backgroundColor = getColorForOption(maxOption);
-
-//   updateAdditionalInfo(maxOption);
-// }
-
-// // Helper function to map option letters to corresponding colors
-// function getColorForOption(option) {
-//   var colorMap = { a: "Orange", b: "Green", c: "Blue", d: "Gold" };
-//   return colorMap[option];
-// }
-
-// function updateAdditionalInfo(color) {
-//   var additionalInfoElement = document.getElementById("additionalInfo");
-//   var infoContent = "";
-
-//   // Add information based on the color
-//   switch (color) {
-//     case "a":
-//       infoContent =
-//         "<h1>Are you…Orange?</h1><br><h3>Witty…Charming…Spontaneous?<br>Impulsive…Generous…Impactful?<br>Optimistic…Eager…Bold?<br>Physical…Immediate…Courageous?</h3><br>At school…<br>I learn by doing and experiencing, rather than by listening and reading.<br>I like being physically involved in the learning process and am motivated by my own natural competitive self and sense of fun.<br>I am a natural performer.<br>I like doing tasks that allow me to be independent and free.";
-//       break;
-//     case "b":
-//       infoContent =
-//         "<h1>Are you…Green??</h1><br><h3>Analytical…Global…Conceptual??<br>Cool…Calm…Collected?<br>Inventive…Logical…Problem Solver?<br>Abstract…Creative…Investigative?</h3><br>At school…<br>For me, work is play.I am drawn to constant challenge.I like to develop models and explore ideas.";
-//       break;
-//     case "c":
-//       infoContent =
-//         "<h1>Are you…Gold??</h1><br><h3>Witty…Charming…Spontaneous?<br>Impulsive…Generous…Impactful?<br>Optimistic…Eager…Bold?<br>Physical…Immediate…Courageous?</h3><br>At school…<br>I learn by doing and experiencing, rather than by listening and reading.<br>I like being physically involved in the learning process and am motivated by my own natural competitive self and sense of fun.<br>I am a natural performer.<br>I like doing tasks that allow me to be independent and free.";
-//       break;
-//     case "d":
-//       infoContent =
-//         "<h1>Are you…Orange?</h1><br><h3>Witty…Charming…Spontaneous?<br>Impulsive…Generous…Impactful?<br>Optimistic…Eager…Bold?<br>Physical…Immediate…Courageous?</h3><br>At school…<br>I learn by doing and experiencing, rather than by listening and reading.<br>I like being physically involved in the learning process and am motivated by my own natural competitive self and sense of fun.<br>I am a natural performer.<br>I like doing tasks that allow me to be independent and free.";
-//       break;
-//     // Repeat similar cases for other colors
-//   }
-
-// Update the content
-//additionalInfoElement.innerHTML = infoContent;
-//}
-
-document.body.style.backgroundColor = getColorForOption(maxOption);
-
-function displaySinglePersonality(color) {
-  var additionalInfoElement = document.getElementById("additionalInfo");
-  var infoContent = getAdditionalInfoForColor(color);
-  additionalInfoElement.innerHTML = infoContent;
+  //Set background color based on the color with the most points
+  if (sameSumColors.length > 0) {
+    //Set gradient background if there are multiple colors with the same sum
+    setGradientBackground(sameSumColors);
+    updateAdditionalInfo(sameSumColors);
+  } else {
+    //Set background color based on the color with the most points
+    document.body.style.backgroundColor = getColorForOption(maxOption);
+    updateAdditionalInfo(maxOption);
+  }
 }
 
-function displayMultiplePersonalities(colors) {
-  var additionalInfoElement = document.getElementById("additionalInfo");
-  var infoContent =
-    "<h1>You have a combination of personalities:</h1><br><h3>" +
-    colors.map((color) => getAdditionalInfoForColor(color)).join("<br><br>") +
-    "</h3>";
-  additionalInfoElement.innerHTML = infoContent;
-}
-
+// Helper function to map option letters to corresponding colors
 function getColorForOption(option) {
   var colorMap = { a: "Orange", b: "Green", c: "Blue", d: "Gold" };
   return colorMap[option];
 }
 
-function getAdditionalInfoForColor(color) {
+function updateAdditionalInfo(colors) {
+  var additionalInfoElement = document.getElementById("additionalInfo");
+  var infoContent = "";
+
   // Add information based on the color
-  switch (color) {
-    case "a":
-      return "<h1>Are you…Orange?</h1>..."; // Add the information for Orange
-    case "b":
-      return "<h1>Are you…Green?</h1>..."; // Add the information for Green
-    case "c":
-      return "<h1>Are you…Blue?</h1>..."; // Add the information for Blue
-    case "d":
-      return "<h1>Are you…Gold?</h1>..."; // Add the information for Gold
-    default:
-      return "";
+  if (colors.length === 1) {
+    switch (colors[0]) {
+      case "a":
+        infoContent =
+          "<h1>Are you…Orange?</h1><br><h3>Witty…Charming…Spontaneous?<br>Impulsive…Generous…Impactful?<br>Optimistic…Eager…Bold?<br>Physical…Immediate…Courageous?<br>At school…<br>I learn by doing and experiencing, rather than by listening and reading.<br>I like being physically involved in the learning process and am motivated by my own natural competitive self and sense of fun.<br>I am a natural performer.<br>I like doing tasks that allow me to be independent and free.";
+        break;
+      case "b":
+        infoContent =
+          "<h1>Are you…Green?</h1><br><h3>Analytical…Global…Conceptual?<br>Cool…Calm…Collected?<br>Inventive…Logical…Problem Solver?<br>Abstract…Creative…Investigative?<br>At school…<br>I am conceptual and am an independent thinker.<br>For me, work is play.<br>I am drawn to constant challenge.<br>I like to develop models and explore ideas.";
+        break;
+      case "c":
+        infoContent =
+          "<h1>Are you…Blue?</h1><br><h3>Enthusiastic…Sympathetic…Personal?<br>Warm…Communicative…Compassionate?<br>Idealistic…Spiritual…Sincere?<br>Peaceful…Flexible…Imaginative?<br>At school…<br>I have a strong desire to be a role model for my classmates.<br>I am skilled at motivating and interacting with others – I make friends easily and like having friends.<br>I respond well to encouragement rather than competition.<br>I like being artistic, communicating with people, and helping people.";
+        break;
+      case "d":
+        infoContent =
+          "<h1>Are you…Gold?</h1><br><h3>Loyal…Dependable…Prepared?<br>Thorough…Sensible…Punctual?<br>Faithful…Stable…Organized?<br>Caring…Concerned…Helper?<br>At school…<br>I am stable and organized.<br>I am detailed-oriented and predictable.<br>I believe that work comes before play, even if I must work overtime to complete the job.<br>I understand and respect authority and am comfortable with how school goes.";
+        break;
+    }
+  } else if (colors.length > 1) {
+    // Display a generic message for a mix of two colors
+    infoContent = "<h1>You are a Mix of Several Colors!</h1><br>";
   }
+  // Update the content
+  additionalInfoElement.innerHTML = infoContent;
 }
 
+// // Helper function to set gradient background for multiple colors
 function setGradientBackground(colors) {
   var gradientColors = colors.map((color) => getColorForOption(color));
   document.body.style.backgroundImage = `linear-gradient(to right, ${gradientColors.join(
@@ -336,25 +306,7 @@ function setGradientBackground(colors) {
   )})`;
 }
 
-function updateResults() {
-  var optionSums = JSON.parse(localStorage.getItem("optionSums")) || {};
-
-  // Find the maximum sum
-  var maxSum = Math.max(...Object.values(optionSums));
-
-  // Find all colors with the maximum sum
-  var maxColors = Object.keys(optionSums).filter(
-    (color) => optionSums[color] === maxSum
-  );
-
-  // Display the personalities with the same punctuation
-  if (maxColors.length === 1) {
-    displaySinglePersonality(maxColors[0]);
-  } else {
-    displayMultiplePersonalities(maxColors);
-  }
-
-  // Set background gradient based on the colors
-
-  setGradientBackground(maxColors);
-}
+document.addEventListener("DOMContentLoaded", function () {
+  calculateOptionSums();
+  updateResults();
+});
