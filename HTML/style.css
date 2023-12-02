@@ -43,7 +43,7 @@ nav a {
   padding: 10px 20px;
   border: 2px solid #333;
   color: #333;
-  background-color: #fff;
+  background-color: #d7f8e9;
   border-radius: 5px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -65,7 +65,7 @@ footer {
   font-size: 1.2rem;
   line-height: 1.6;
   color: #fbf9f9;
-  font-family: "HK Grotesk", sans-serif;
+  font-family: "Jost", sans-serif;
   margin-bottom: 20px;
 }
 

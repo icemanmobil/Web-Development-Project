@@ -1,7 +1,5 @@
-console.log("Script loaded!");
-
 document.addEventListener("DOMContentLoaded", function () {
-  const textToType = "The True Colors Personality Test!!!";
+  const textToType = `Welcome to The True Colors Personality Test!!!`;
   let index = 0;
   const typingElement = document.getElementById("typing-text");
 
