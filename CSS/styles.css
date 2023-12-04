@@ -118,3 +118,11 @@ th {
   font-size: 1rem;
   margin-bottom: 8px;
 }
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin-top: 30px; /* Push the footer to the bottom */
+}

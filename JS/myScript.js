@@ -147,14 +147,40 @@ function calculateOptionSums() {
 
 function updateResults() {
   var optionSums = JSON.parse(localStorage.getItem("optionSums")) || {};
+  var ranks = { a: 0, b: 0, c: 0, d: 0 };
+
+  var sortedOptions = Object.keys(optionSums).sort(function (a, b) {
+    return optionSums[b] - optionSums[a];
+  });
+
+  // Assign ranks based on the sorted order
+  var currentRank = 1;
+  var currentTotal = optionSums[sortedOptions[0]];
+
+  for (var i = 0; i < sortedOptions.length; i++) {
+    var option = sortedOptions[i];
+
+    if (optionSums[option] < currentTotal) {
+      currentRank = i + 1;
+      currentTotal = optionSums[option];
+    }
+
+    ranks[option] = currentRank;
+  }
 
   // Iterate through the option sums and update the corresponding table cells
   for (var option in optionSums) {
     var optionSumElement = document.getElementById(
       "option" + option.toUpperCase() + "Sum"
     );
+    var optionRankElement = document.getElementById(
+      "option" + option.toUpperCase() + "Rank"
+    );
     if (optionSumElement) {
       optionSumElement.textContent = optionSums[option];
+    }
+    if (optionRankElement) {
+      optionRankElement.textContent = ranks[option];
     }
   }
   // Determine the option with the maximum sum
